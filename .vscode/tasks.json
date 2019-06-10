@@ -2,11 +2,11 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "chrome",
+            "label": "bulid",
             "type": "process",
             "command": "chrome.exe",
             "windows": {
-                "command": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+                "command": "C:\\ProgramData\\Microsoft\\Windows\\'Start Menu'\\programs\\chrome.exe"
             },
             "args": [
                 "${file}"
