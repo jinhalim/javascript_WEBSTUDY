@@ -125,3 +125,74 @@ delete myDog.family
 // Dog { name: '검둥이', age: 3, breed: [Function] }
 
 
+
+
+/** Object.prototype에서 상속 받는 대표적인 메소드
+
+1. hasOwnProperty() 
+// 해당 property가 존재하는지 유무
+//해당 객체에서 직접 선언된 프로퍼티만을 검사하며, 
+같은 이름의 프로퍼티라도 상속받은 프로퍼티는 false 반환
+2. propertyIsEnumerable() 
+//특정 프로퍼티가 해당 객체에 존재하고, 
+// 열거할 수 있는 프로퍼티인지 검사
+3. isPrototypeOf()
+//특정 객체의 프로토타입 체인에 
+// 현재 객체가 존재하는지 검사
+4. isExtensible()
+//객체에 새로운 프로퍼티를 추가할 수 있는지 여부
+5. toString()
+//호출한 객체의 값을 문자로 반환
+6. valueOf()
+// 객체의 원시 타입(primitive type)의 값 반환
+*/
+
+
+function func(n) {
+    this.number = n;
+}
+myFunc = new func(4);
+// console.log(myFunc+5)
+// [object Object]5
+func.prototype.valueOf = function() { 
+    // valueOf() 메소드를 정의함.
+    return this.number;
+}
+// console.log(myFunc+5)
+// 9
+
+
+//getter & setter 메소드
+//접근자 property.
+
+/** getter
+: 특정 prooerty에서 값을 받아오기 위한 메소드
+*/
+let gildong = {age :18}
+Object.defineProperty(gildong,"americanAge",{ 
+    get: function(){
+        return this.age-1
+    }
+})
+// console.log(gildong.americanAge)
+//17
+
+/** setter 
+: 특정 property 값을 설정하기 위한 메소드
+*/
+
+gildong.age = 20
+// console.log(gildong.age)
+//20
+
+Object.defineProperty(gildong,"changeAge",{
+    set: function(n){
+        this.age = this.age - n
+    }
+})
+
+gildong.changeAge = 5
+// console.age(gildong.age)
+//15
+
+
